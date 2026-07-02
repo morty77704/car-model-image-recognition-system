@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车型图像识别系统</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>🚗 车型图像识别系统</h1>
+            <p class="subtitle">上传车辆图片，三个模型并行识别，对比置信度</p>
+        </header>
+
+        <!-- 上传区域 -->
+        <section class="upload-section" id="uploadSection">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📸</div>
+                <p class="upload-text">拖拽图片到此处，或点击上传</p>
+                <p class="upload-hint">支持 JPG / PNG / WebP 格式</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+            <div class="preview-area" id="previewArea" style="display:none">
+                <img id="previewImg" alt="预览">
+                <div class="preview-actions">
+                    <button class="btn btn-primary" id="btnRecognize">🔍 开始识别</button>
+                    <button class="btn btn-secondary" id="btnClear">重新上传</button>
+                </div>
+            </div>
+            <div class="status-bar" id="statusBar"></div>
+        </section>
+
+        <!-- 共识结果 -->
+        <section class="consensus-section" id="consensusSection" style="display:none">
+            <h2>📊 多模型共识</h2>
+            <div class="consensus-card" id="consensusCard"></div>
+        </section>
+
+        <!-- 三模型对比 -->
+        <section class="results-section" id="resultsSection" style="display:none">
+            <h2>🔬 三模型对比</h2>
+            <div class="results-grid" id="resultsGrid"></div>
+        </section>
+
+        <!-- 系统状态 -->
+        <section class="status-section" id="statusSection">
+            <h2>🖥️ 系统状态</h2>
+            <div class="model-status-grid" id="modelStatusGrid">
+                <div class="loading-status">正在获取模型状态...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

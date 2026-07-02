@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员端 - 车型识别模型看板</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container admin-container">
+        <header class="header admin-header">
+            <div>
+                <h1>管理员端</h1>
+                <p class="subtitle">查看整体反馈情况，并分别分析各个模型的表现</p>
+            </div>
+            <a class="btn btn-secondary" href="/">返回识别页</a>
+        </header>
+
+        <section class="admin-stats" id="adminStats">
+            <div class="stat-card">
+                <span class="stat-label">反馈总数</span>
+                <strong id="statTotal">0</strong>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">正确反馈</span>
+                <strong id="statCorrect">0</strong>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">错误反馈</span>
+                <strong id="statWrong">0</strong>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">反馈准确率</span>
+                <strong id="statAccuracy">-</strong>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">已有反馈的模型</span>
+                <strong id="statModelsWithFeedback">0</strong>
+            </div>
+        </section>
+
+        <section class="admin-overview-section">
+            <div class="admin-section-header">
+                <div>
+                    <h2>模型总览</h2>
+                    <p class="admin-section-note">每个模型单独展示反馈表现、加载状态和最近错误样本。</p>
+                </div>
+            </div>
+            <div class="admin-model-grid" id="modelOverviewGrid">
+                <div class="empty-state">正在加载模型统计...</div>
+            </div>
+        </section>
+
+        <section class="admin-filter-bar">
+            <div class="admin-section-header compact">
+                <div>
+                    <h2>反馈明细</h2>
+                    <p class="admin-section-note">支持按模型筛选，方便分别查看每个模型的反馈记录。</p>
+                </div>
+                <button class="btn btn-primary" id="btnRefresh">刷新</button>
+            </div>
+            <div class="model-filter-group" id="modelFilterGroup">
+                <button class="btn btn-secondary is-active" data-model-filter="all" type="button">全部模型</button>
+            </div>
+        </section>
+
+        <section class="admin-panel">
+            <div class="admin-table-wrap">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>模型</th>
+                            <th>图片 ID</th>
+                            <th>预测车型</th>
+                            <th>置信度</th>
+                            <th>反馈</th>
+                            <th>正确车型</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feedbackTableBody">
+                        <tr>
+                            <td colspan="8" class="empty-cell">正在加载反馈数据...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/admin.js"></script>
+</body>
+</html>
